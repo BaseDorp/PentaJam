@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "PentaJam",
+			"Path": "C:\\Users\\super\\Documents\\UnrealProjects\\PentaJam\\PentaJam\\Source\\PentaJam.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "PentaJamEditor",
+			"Path": "C:\\Users\\super\\Documents\\UnrealProjects\\PentaJam\\PentaJam\\Source\\PentaJamEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
