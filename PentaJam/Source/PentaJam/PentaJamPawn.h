@@ -35,11 +35,14 @@ public:
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite )
 	FVector GunOffset;
 
-	UPROPERTY(Category = Gameplay, VisibleAnywhere)
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
 	int ammo;
 
 	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
 	float health;
+
+	UPROPERTY()
+	FVector spawnLocation;
 	
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
@@ -63,6 +66,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RefillAmmo();
+
+	UFUNCTION(BlueprintCallable)
+	void RespawnPlayer();
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();

@@ -24,6 +24,13 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(APentaJamPawn::execRespawnPlayer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RespawnPlayer();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APentaJamPawn::execRefillAmmo)
 	{
 		P_FINISH;
@@ -36,6 +43,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		UClass* Class = APentaJamPawn::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "RefillAmmo", &APentaJamPawn::execRefillAmmo },
+			{ "RespawnPlayer", &APentaJamPawn::execRespawnPlayer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -58,6 +66,28 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_APentaJamPawn_RefillAmmo_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "PentaJamPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APentaJamPawn, nullptr, "RespawnPlayer", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APentaJamPawn_RespawnPlayer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_APentaJamPawn_RespawnPlayer_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -101,6 +131,10 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_health;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_spawnLocation_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_spawnLocation;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireRate_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
@@ -122,6 +156,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_APentaJamPawn_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_APentaJamPawn_RefillAmmo, "RefillAmmo" }, // 1151622795
+		{ &Z_Construct_UFunction_APentaJamPawn_RespawnPlayer, "RespawnPlayer" }, // 1486438588
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APentaJamPawn_Statics::Class_MetaDataParams[] = {
@@ -189,7 +224,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		{ "ModuleRelativePath", "PentaJamPawn.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo = { "ammo", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, ammo), METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo_MetaData)) };
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo = { "ammo", nullptr, (EPropertyFlags)0x0010000000020005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, ammo), METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData[] = {
 		{ "Category", "Gameplay" },
@@ -197,6 +232,12 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health = { "health", nullptr, (EPropertyFlags)0x0010000000020005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, health), METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APentaJamPawn_Statics::NewProp_spawnLocation_MetaData[] = {
+		{ "ModuleRelativePath", "PentaJamPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_spawnLocation = { "spawnLocation", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, spawnLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_spawnLocation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_spawnLocation_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APentaJamPawn_Statics::NewProp_FireRate_MetaData[] = {
 		{ "Category", "Gameplay" },
@@ -232,6 +273,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_GunOffset,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_ammo,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_spawnLocation,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_FireRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_MoveSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APentaJamPawn_Statics::NewProp_FireSound,
@@ -263,7 +305,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APentaJamPawn, 157929828);
+	IMPLEMENT_CLASS(APentaJamPawn, 1486873311);
 	template<> PENTAJAM_API UClass* StaticClass<APentaJamPawn>()
 	{
 		return APentaJamPawn::StaticClass();

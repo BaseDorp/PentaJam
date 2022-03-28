@@ -16,11 +16,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define PentaJam_Source_PentaJam_PentaJamPawn_h_14_SPARSE_DATA
 #define PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execRespawnPlayer); \
 	DECLARE_FUNCTION(execRefillAmmo);
 
 
 #define PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execRespawnPlayer); \
 	DECLARE_FUNCTION(execRefillAmmo);
 
 

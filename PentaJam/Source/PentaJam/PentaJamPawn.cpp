@@ -82,7 +82,8 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
 	{
-		const FRotator NewRotation = Movement.Rotation();
+		// TODO not rotate?
+		const FRotator NewRotation = Movement.Rotation(); //FRotator::ZeroRotator;
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 		
@@ -108,6 +109,8 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 		// disable input
 		// game over screen
 	}
+
+	spawnLocation = GetActorLocation();
 }
 
 void APentaJamPawn::FireShot()
@@ -165,3 +168,7 @@ void APentaJamPawn::RefillAmmo()
 	ammo = 5;
 }
 
+void APentaJamPawn::RespawnPlayer()
+{
+	SetActorLocation(spawnLocation);
+}
