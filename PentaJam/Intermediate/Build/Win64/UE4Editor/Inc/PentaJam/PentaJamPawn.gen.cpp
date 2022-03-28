@@ -196,7 +196,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		{ "ModuleRelativePath", "PentaJamPawn.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health = { "health", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, health), METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData)) };
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health = { "health", nullptr, (EPropertyFlags)0x0010000000020005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APentaJamPawn, health), METADATA_PARAMS(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APentaJamPawn_Statics::NewProp_health_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APentaJamPawn_Statics::NewProp_FireRate_MetaData[] = {
 		{ "Category", "Gameplay" },
@@ -263,7 +263,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJamPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APentaJamPawn, 1771198406);
+	IMPLEMENT_CLASS(APentaJamPawn, 157929828);
 	template<> PENTAJAM_API UClass* StaticClass<APentaJamPawn>()
 	{
 		return APentaJamPawn::StaticClass();

@@ -94,13 +94,20 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 		}
 	}
 	
-	// Create fire direction vector
-	//const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	//const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = GetActorForwardVector(); //FVector(FireForwardValue, FireRightValue, 0.f);
+	const FVector FireDirection = GetActorForwardVector();
 
-	// Try and fire a shot
-	//FireShot(FireDirection);
+	if (ammo < 5)
+	{
+		// TODO create timer to add 1 bullet
+		// OR
+		// create timer that adds 5 bullets when ammo is zero
+	}
+
+	if (health <= 0)
+	{
+		// disable input
+		// game over screen
+	}
 }
 
 void APentaJamPawn::FireShot()
@@ -110,46 +117,42 @@ void APentaJamPawn::FireShot()
 	{
 		float mouseX;
 		float mouseY;
-		if (playerController != nullptr) 
+		if (playerController != nullptr)
 		{
 			if (playerController->GetMousePosition(mouseX, mouseY))
-			{ 
+			{
 				// TODO ________________
 				//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Failed to get mouse position"));
 				//return;
 			}
 		}
-		
-		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Mouse Position: %f"), );
+
 		FVector FireDirection = GetActorForwardVector();
-		// If we are pressing fire stick in a direction
-		if (true)
+
+		const FRotator FireRotation = FireDirection.Rotation();
+		// Spawn projectile at an offset from this pawn
+		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+		UWorld* const World = GetWorld();
+		if (World != nullptr)
 		{
-			const FRotator FireRotation = FireDirection.Rotation();
-			// Spawn projectile at an offset from this pawn
-			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
-
-			UWorld* const World = GetWorld();
-			if (World != nullptr)
-			{
-				// spawn the projectile
-				World->SpawnActor<APentaJamProjectile>(SpawnLocation, FireRotation);
-			}
-
-			bCanFire = false;
-			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &APentaJamPawn::ShotTimerExpired, FireRate);
-
-			// try and play the sound if specified
-			if (FireSound != nullptr)
-			{
-				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-			}
-
-			bCanFire = false;
-			ammo -= 1;
-
+			// spawn the projectile
+			World->SpawnActor<APentaJamProjectile>(SpawnLocation, FireRotation);
 		}
-	}
+
+		bCanFire = false;
+		World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &APentaJamPawn::ShotTimerExpired, FireRate);
+
+		// try and play the sound if specified
+		if (FireSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+		}
+
+		bCanFire = false;
+		ammo -= 1;
+
+	} 
 }
 
 void APentaJamPawn::ShotTimerExpired()

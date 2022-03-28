@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodePentaJam_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x2D2E3D7B,
+				0x2741E309,
 				0x04693CD1,
 				METADATA_PARAMS(nullptr, 0)
 			};

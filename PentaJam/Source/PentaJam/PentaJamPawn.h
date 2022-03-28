@@ -38,7 +38,7 @@ public:
 	UPROPERTY(Category = Gameplay, VisibleAnywhere)
 	int ammo;
 
-	UPROPERTY(Category = Gameplay, VisibleAnywhere)
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
 	float health;
 	
 	/* How fast the weapon will fire */
