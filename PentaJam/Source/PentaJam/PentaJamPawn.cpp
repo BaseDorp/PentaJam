@@ -23,6 +23,7 @@ APentaJamPawn::APentaJamPawn()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
+	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Sprite"));
 	RootComponent = ShipMeshComponent;
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
@@ -50,6 +51,8 @@ APentaJamPawn::APentaJamPawn()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+	ammo = 5;
+
 }
 
 void APentaJamPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -59,8 +62,9 @@ void APentaJamPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
-	PlayerInputComponent->BindAxis(FireForwardBinding);
-	PlayerInputComponent->BindAxis(FireRightBinding);
+	//PlayerInputComponent->BindAxis(FireForwardBinding);
+	//PlayerInputComponent->BindAxis(FireRightBinding);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APentaJamPawn::FireShot);
 }
 
 void APentaJamPawn::Tick(float DeltaSeconds)
@@ -78,7 +82,8 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
 	{
-		const FRotator NewRotation = Movement.Rotation();
+		// TODO not rotate?
+		const FRotator NewRotation = Movement.Rotation(); //FRotator::ZeroRotator;
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 		
@@ -90,46 +95,67 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 		}
 	}
 	
-	// Create fire direction vector
-	const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+	const FVector FireDirection = GetActorForwardVector();
 
-	// Try and fire a shot
-	FireShot(FireDirection);
+	if (ammo < 5)
+	{
+		// TODO create timer to add 1 bullet
+		// OR
+		// create timer that adds 5 bullets when ammo is zero
+	}
+
+	if (health <= 0)
+	{
+		// disable input
+		// game over screen
+	}
+
+	spawnLocation = GetActorLocation();
 }
 
-void APentaJamPawn::FireShot(FVector FireDirection)
+void APentaJamPawn::FireShot()
 {
 	// If it's ok to fire again
-	if (bCanFire == true)
+	if (bCanFire == true && ammo > 0)
 	{
-		// If we are pressing fire stick in a direction
-		if (FireDirection.SizeSquared() > 0.0f)
+		float mouseX;
+		float mouseY;
+		if (playerController != nullptr)
 		{
-			const FRotator FireRotation = FireDirection.Rotation();
-			// Spawn projectile at an offset from this pawn
-			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
-
-			UWorld* const World = GetWorld();
-			if (World != nullptr)
+			if (playerController->GetMousePosition(mouseX, mouseY))
 			{
-				// spawn the projectile
-				World->SpawnActor<APentaJamProjectile>(SpawnLocation, FireRotation);
+				// TODO ________________
+				//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Failed to get mouse position"));
+				//return;
 			}
-
-			bCanFire = false;
-			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &APentaJamPawn::ShotTimerExpired, FireRate);
-
-			// try and play the sound if specified
-			if (FireSound != nullptr)
-			{
-				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-			}
-
-			bCanFire = false;
 		}
-	}
+
+		FVector FireDirection = GetActorForwardVector();
+
+		const FRotator FireRotation = FireDirection.Rotation();
+		// Spawn projectile at an offset from this pawn
+		const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+		UWorld* const World = GetWorld();
+		if (World != nullptr)
+		{
+			// spawn the projectile
+			World->SpawnActor<APentaJamProjectile>(SpawnLocation, FireRotation);
+		}
+
+		bCanFire = false;
+		World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &APentaJamPawn::ShotTimerExpired, FireRate);
+
+		// try and play the sound if specified
+		if (FireSound != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+		}
+
+		bCanFire = false;
+		ammo -= 1;
+
+	} 
 }
 
 void APentaJamPawn::ShotTimerExpired()
@@ -137,3 +163,12 @@ void APentaJamPawn::ShotTimerExpired()
 	bCanFire = true;
 }
 
+void APentaJamPawn::RefillAmmo()
+{
+	ammo = 5;
+}
+
+void APentaJamPawn::RespawnPlayer()
+{
+	SetActorLocation(spawnLocation);
+}

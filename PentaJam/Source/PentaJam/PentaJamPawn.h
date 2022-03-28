@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "PaperSpriteComponent.h"
+#include "GameFramework/PlayerController.h"
 #include "PentaJamPawn.generated.h"
 
 UCLASS(Blueprintable)
@@ -14,6 +16,9 @@ class APentaJamPawn : public APawn
 	/* The mesh component */
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* ShipMeshComponent;
+
+	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UPaperSpriteComponent* SpriteComponent;
 
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -29,6 +34,15 @@ public:
 	/** Offset from the ships location to spawn projectiles */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite )
 	FVector GunOffset;
+
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
+	int ammo;
+
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
+	float health;
+
+	UPROPERTY()
+	FVector spawnLocation;
 	
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
@@ -48,7 +62,13 @@ public:
 	// End Actor Interface
 
 	/* Fire a shot in the specified direction */
-	void FireShot(FVector FireDirection);
+	void FireShot();
+
+	UFUNCTION(BlueprintCallable)
+	void RefillAmmo();
+
+	UFUNCTION(BlueprintCallable)
+	void RespawnPlayer();
 
 	/* Handler for the fire timer expiry */
 	void ShotTimerExpired();
@@ -58,6 +78,8 @@ public:
 	static const FName MoveRightBinding;
 	static const FName FireForwardBinding;
 	static const FName FireRightBinding;
+
+	APlayerController* playerController;
 
 private:
 

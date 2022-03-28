@@ -13,10 +13,20 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PENTAJAM_PentaJamPawn_generated_h
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_SPARSE_DATA
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_RPC_WRAPPERS
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_INCLASS_NO_PURE_DECLS \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_SPARSE_DATA
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execRespawnPlayer); \
+	DECLARE_FUNCTION(execRefillAmmo);
+
+
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execRespawnPlayer); \
+	DECLARE_FUNCTION(execRefillAmmo);
+
+
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPentaJamPawn(); \
 	friend struct Z_Construct_UClass_APentaJamPawn_Statics; \
@@ -25,7 +35,7 @@ public: \
 	DECLARE_SERIALIZER(APentaJamPawn)
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_INCLASS \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAPentaJamPawn(); \
 	friend struct Z_Construct_UClass_APentaJamPawn_Statics; \
@@ -34,7 +44,7 @@ public: \
 	DECLARE_SERIALIZER(APentaJamPawn)
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_STANDARD_CONSTRUCTORS \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APentaJamPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APentaJamPawn) \
@@ -47,7 +57,7 @@ private: \
 public:
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_ENHANCED_CONSTRUCTORS \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APentaJamPawn(APentaJamPawn&&); \
@@ -58,33 +68,34 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APentaJamPawn)
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_PRIVATE_PROPERTY_OFFSET \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__ShipMeshComponent() { return STRUCT_OFFSET(APentaJamPawn, ShipMeshComponent); } \
+	FORCEINLINE static uint32 __PPO__SpriteComponent() { return STRUCT_OFFSET(APentaJamPawn, SpriteComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraComponent() { return STRUCT_OFFSET(APentaJamPawn, CameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(APentaJamPawn, CameraBoom); }
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_9_PROLOG
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_GENERATED_BODY_LEGACY \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_11_PROLOG
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_SPARSE_DATA \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_RPC_WRAPPERS \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_INCLASS \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_STANDARD_CONSTRUCTORS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_PRIVATE_PROPERTY_OFFSET \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_SPARSE_DATA \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_INCLASS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define PentaJam_Source_PentaJam_PentaJamPawn_h_12_GENERATED_BODY \
+#define PentaJam_Source_PentaJam_PentaJamPawn_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_SPARSE_DATA \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_INCLASS_NO_PURE_DECLS \
-	PentaJam_Source_PentaJam_PentaJamPawn_h_12_ENHANCED_CONSTRUCTORS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_PRIVATE_PROPERTY_OFFSET \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_SPARSE_DATA \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_INCLASS_NO_PURE_DECLS \
+	PentaJam_Source_PentaJam_PentaJamPawn_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
