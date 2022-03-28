@@ -52,7 +52,7 @@ APentaJamPawn::APentaJamPawn()
 	FireRate = 0.1f;
 	bCanFire = true;
 	ammo = 5;
-
+	health = 100;
 }
 
 void APentaJamPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -82,8 +82,7 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
 	{
-		// TODO not rotate?
-		const FRotator NewRotation = Movement.Rotation(); //FRotator::ZeroRotator;
+		const FRotator NewRotation = Movement.Rotation();
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
 		
@@ -97,20 +96,20 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 	
 	const FVector FireDirection = GetActorForwardVector();
 
-	if (ammo < 5)
-	{
-		// TODO create timer to add 1 bullet
-		// OR
-		// create timer that adds 5 bullets when ammo is zero
-	}
+	//if (ammo < 5)
+	//{
+	//	// TODO create timer to add 1 bullet
+	//	// OR
+	//	// create timer that adds 5 bullets when ammo is zero
+	//}
 
-	if (health <= 0)
-	{
-		// disable input
-		// game over screen
-	}
+	//if (health <= 0)
+	//{
+	//	// disable input
+	//	// game over screen
+	//}
 
-	spawnLocation = GetActorLocation();
+	//spawnLocation = GetActorLocation();
 }
 
 void APentaJamPawn::FireShot()
@@ -155,6 +154,10 @@ void APentaJamPawn::FireShot()
 		bCanFire = false;
 		ammo -= 1;
 
+		if (ammo <= 0)
+		{
+			RefillAmmo();
+		}
 	} 
 }
 
