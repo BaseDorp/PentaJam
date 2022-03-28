@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\PentaJam.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{ADE47CAA-EFF2-4A10-BA49-BF3E57881AFA}</UniqueIdentifier>
+      <UniqueIdentifier>{5B303708-B03B-412B-B8CE-01FC23CBB071}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\PentaJam.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{2DE52B42-509B-4D9D-AA63-4B77BAF88C34}</UniqueIdentifier>
+      <UniqueIdentifier>{32062E54-8AC1-498C-A930-18D5BFF69D93}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,8 +30,14 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\PentaJam">
-      <UniqueIdentifier>{7EF78CCF-F8FD-4EDE-A747-280F5903E0D8}</UniqueIdentifier>
+      <UniqueIdentifier>{1026011D-7A03-4056-8D62-92916B7BE007}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\PentaJam\EnemyActor.cpp">
+      <Filter>Source\PentaJam</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PentaJam\EnemyActor.h">
+      <Filter>Source\PentaJam</Filter>
+    </ClInclude>
     <None Include="..\..\Source\PentaJam\PentaJam.Build.cs">
       <Filter>Source\PentaJam</Filter>
     </None>

@@ -1,0 +1,30 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\super\Documents\UnrealProjects\PentaJam).
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-5373.dll
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-5373.pdb
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-6749.dll
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-6749.pdb
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-8167.dll
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-8167.pdb
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-8569.dll
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Binaries\Win64\UE4Editor-PentaJam-8569.pdb
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-0612.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-0844.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-0882.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-1477.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-2585.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-3670.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-5373.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-6749.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-8167.lib
+  Deleted hot-reload file: C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam-8569.lib
+  Building PentaJamEditor...
+  Using Visual Studio 2019 14.29.30136 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 4 actions with 12 processes...
+    [1/4] PentaJamPawn.cpp
+    [2/4] UE4Editor-PentaJam.lib
+       Creating library C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam.lib and object C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam.exp
+    [3/4] UE4Editor-PentaJam.dll
+       Creating library C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam.suppressed.lib and object C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4Editor\Development\PentaJam\UE4Editor-PentaJam.suppressed.exp
+    [4/4] PentaJamEditor.target
+  Total time in Parallel executor: 1.32 seconds
+  Total execution time: 1.69 seconds

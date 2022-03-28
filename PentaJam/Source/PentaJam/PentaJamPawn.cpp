@@ -23,6 +23,7 @@ APentaJamPawn::APentaJamPawn()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
+	SpriteComponent = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Sprite"));
 	RootComponent = ShipMeshComponent;
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
@@ -50,6 +51,8 @@ APentaJamPawn::APentaJamPawn()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+	ammo = 5;
+
 }
 
 void APentaJamPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -59,8 +62,9 @@ void APentaJamPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAxis(MoveForwardBinding);
 	PlayerInputComponent->BindAxis(MoveRightBinding);
-	PlayerInputComponent->BindAxis(FireForwardBinding);
-	PlayerInputComponent->BindAxis(FireRightBinding);
+	//PlayerInputComponent->BindAxis(FireForwardBinding);
+	//PlayerInputComponent->BindAxis(FireRightBinding);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APentaJamPawn::FireShot);
 }
 
 void APentaJamPawn::Tick(float DeltaSeconds)
@@ -91,21 +95,35 @@ void APentaJamPawn::Tick(float DeltaSeconds)
 	}
 	
 	// Create fire direction vector
-	const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
-	const float FireRightValue = GetInputAxisValue(FireRightBinding);
-	const FVector FireDirection = FVector(FireForwardValue, FireRightValue, 0.f);
+	//const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
+	//const float FireRightValue = GetInputAxisValue(FireRightBinding);
+	const FVector FireDirection = GetActorForwardVector(); //FVector(FireForwardValue, FireRightValue, 0.f);
 
 	// Try and fire a shot
-	FireShot(FireDirection);
+	//FireShot(FireDirection);
 }
 
-void APentaJamPawn::FireShot(FVector FireDirection)
+void APentaJamPawn::FireShot()
 {
 	// If it's ok to fire again
-	if (bCanFire == true)
+	if (bCanFire == true && ammo > 0)
 	{
+		float mouseX;
+		float mouseY;
+		if (playerController != nullptr) 
+		{
+			if (playerController->GetMousePosition(mouseX, mouseY))
+			{ 
+				// TODO ________________
+				//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Failed to get mouse position"));
+				//return;
+			}
+		}
+		
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Mouse Position: %f"), );
+		FVector FireDirection = GetActorForwardVector();
 		// If we are pressing fire stick in a direction
-		if (FireDirection.SizeSquared() > 0.0f)
+		if (true)
 		{
 			const FRotator FireRotation = FireDirection.Rotation();
 			// Spawn projectile at an offset from this pawn
@@ -128,6 +146,8 @@ void APentaJamPawn::FireShot(FVector FireDirection)
 			}
 
 			bCanFire = false;
+			ammo -= 1;
+
 		}
 	}
 }
@@ -135,5 +155,10 @@ void APentaJamPawn::FireShot(FVector FireDirection)
 void APentaJamPawn::ShotTimerExpired()
 {
 	bCanFire = true;
+}
+
+void APentaJamPawn::RefillAmmo()
+{
+	ammo = 5;
 }
 
