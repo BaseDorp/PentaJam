@@ -1,0 +1,2 @@
+C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Intermediate\Build\Win64\UE4\Development\PentaJam\Definitions.PentaJam.h
+C:\Users\super\Documents\UnrealProjects\PentaJam\PentaJam\Source\PentaJam\PentaJam.h
